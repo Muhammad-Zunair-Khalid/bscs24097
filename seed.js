@@ -28,7 +28,51 @@ const { connect } = require('./db/connection');
 
   // =============================================================================
   //  TODO: Insert your seed data below.
-  //
+//   {
+//   _id: ObjectId,
+//   email: string (required, unique),
+//   passwordHash: string (required),
+//   name: string (required),
+//   createdAt: Date (required)
+// }
+  db.users.insertmany([
+    {
+      email: "zunair@gmail.com",
+      passwordHash: await bcrypt.hash('password123', 10),
+      name: "Zunair",
+      createdAt: new Date()
+    },
+    {
+      email: "zain@gmail.com",
+      passwordHash: await bcrypt.hash('password124', 10),
+      name: "Zain",
+      createdAt: new Date()
+    },
+    {
+      email: "toheed@gmail.com",
+      passwordHash: await bcrypt.hash('password125', 10),
+      name: "Toheed",
+      createdAt: new Date()
+    }
+  ])
+
+//   {
+//   _id: ObjectId,
+//   ownerId: ObjectId (required, references users._id),
+//   name: string (required),
+//   description: string (optional),
+//   archived: boolean (required, default: false),
+//   createdAt: Date (required)
+// }
+
+db.projects.insertmany([
+{
+  ownerId
+}
+
+])
+
+
   //  Hints:
   //    - Hash passwords:   const hash = await bcrypt.hash('password123', 10);
   //    - Capture inserted ids:
